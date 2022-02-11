@@ -223,7 +223,7 @@ Zotero.ZotFile.pdfAnnotations = new function() {
             settings_colors = JSON.parse(this.getPref("pdfExtraction.colorCategories")),
             setting_color_notes = this.getPref("pdfExtraction.colorNotes"),
 	    setting_aggregate_color_highlights = this.getPref("pdfExtraction.colorAnnotations"),
-            cite = this.getPref("pdfExtraction.NoteFullCite") ? this.Wildcards.replaceWildcard(item, "%a %y:").replace(/_(?!.*_)/," and ").replace(/_/g,", ") : "p. ",
+            cite = this.getPref("pdfExtraction.NoteFullCite") ? this.Wildcards.replaceWildcard(item, "%b").replace(/_(?!.*_)/," and ").replace(/_/g,", ") : "p. ",
             repl = JSON.parse(this.getPref("pdfExtraction.replacements")),
             reg = repl.map(function(obj) {
                 var flags = ('flags' in obj) ? obj.flags : "g";
@@ -273,7 +273,7 @@ Zotero.ZotFile.pdfAnnotations = new function() {
                 catch(err) {}
             }
             // link
-            var link = '<a href="' + uri + '">' + cite + page + '</a>',
+			var link = '<a href="' + uri + '">' + '[@' + cite + ', ' + page + ']' + '</a>',
                 color = ('color' in anno) ? ('rgb(' + anno.color.join(',') + ')') : 'rgb(255,255,255)',
                 color_category = this.pdfAnnotations.getColorCategory(anno.color[0], anno.color[1], anno.color[2]),
                 color_category_hex = settings_colors[color_category];
