@@ -244,7 +244,7 @@
 
 					<!-- ADVANCED SETTINGS -->
 					<tabpanel orient="vertical">
-						<groupbox id="extract-annotations-box">
+						<groupbox>
 							<caption label="&extract-annotations;"/>
 							<label value="&extract-annotations-and-highlighted-text;"/>
 							<separator/>

@@ -79,7 +79,6 @@ Zotero.ZotFile = new function() {
                 var version = addon.version;
                 if(version != previous_version) Zotero.ZotFile.versionChanges(version);
             });
-            this.isZotero6OrLater = Services.vc.compare(Zotero.version, '5.0.96.999') >= 0;
             // run in future to not burden start-up
             this.futureRun(function() {
                 // determine folder seperator depending on OS
