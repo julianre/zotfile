@@ -303,10 +303,18 @@ Zotero.ZotFile.pdfAnnotations = new function() {
                 catch(err) {}
             }
             // link
-			var link = '<a href="' + uri + '">' + '[@' + cite + ', ' + page + ']' + '</a>',
+            // linking depends on preference setting
+            if (this.getPref("pdfExtraction.NoteLinkCitation")){
+             var link = '<a href="' + uri + '">' + '[@' + cite + ', ' + page + ']' + '</a>',
                 color = ('color' in anno) ? ('rgb(' + anno.color.join(',') + ')') : 'rgb(255,255,255)',
                 color_category = this.pdfAnnotations.getColorCategory(anno.color[0], anno.color[1], anno.color[2]),
                 color_category_hex = settings_colors[color_category];
+           } else {
+               var link = '[@' + cite + ', ' + page + ']',
+                color = ('color' in anno) ? ('rgb(' + anno.color.join(',') + ')') : 'rgb(255,255,255)',
+                color_category = this.pdfAnnotations.getColorCategory(anno.color[0], anno.color[1], anno.color[2]),
+                color_category_hex = settings_colors[color_category];
+           }
             // produce hex version of the colour
             var color_hex = "#";
             if ('color' in anno) {
